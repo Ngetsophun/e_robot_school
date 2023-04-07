@@ -23,7 +23,7 @@ class StartScreen extends StatelessWidget {
                   width: MediaQuery.of(context).size.width,
                   height: MediaQuery.of(context).size.height / 1.6,
                   decoration: BoxDecoration(
-                      color: Colors.purple,
+                      color: Colors.red,
                       borderRadius:
                           BorderRadius.only(bottomRight: Radius.circular(70))),
                   child: Center(
@@ -41,7 +41,7 @@ class StartScreen extends StatelessWidget {
                 width: MediaQuery.of(context).size.width,
                 height: MediaQuery.of(context).size.height / 2.666,
                 decoration: BoxDecoration(
-                  color: Colors.purple,
+                  color: Colors.red,
                 ),
               ),
             ),
@@ -83,7 +83,7 @@ class StartScreen extends StatelessWidget {
                       height: 60,
                     ),
                     Material(
-                      color: Colors.purple,
+                      color: Colors.red,
                       borderRadius: BorderRadius.circular(10),
                       child: InkWell(
                         onTap: () {

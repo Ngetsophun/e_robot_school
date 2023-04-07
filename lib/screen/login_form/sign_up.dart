@@ -177,7 +177,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                                                     Login_Form()));
                                       },
                                       child: Text(
-                                        "Log In",
+                                        "Sign In",
                                         style: TextStyle(fontSize: 18),
                                       ),
                                     ),

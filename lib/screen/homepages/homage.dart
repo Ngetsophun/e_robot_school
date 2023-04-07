@@ -1,5 +1,6 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:e_robot_school/alert_exit_dialog.dart';
+import 'package:e_robot_school/model/homepageData.dart';
 import 'package:e_robot_school/screen/Course/course_screen.dart';
 import 'package:flutter/material.dart';
 
@@ -16,16 +17,12 @@ class _HomePageScreenState extends State<HomePageScreen> {
         'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'
         'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'
         'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'
+        'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'
+        'https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885__480.jpg'
   ];
 
-  List data = [
-    {'color': Color(0xffff6968)},
-    {'color': Color(0xffff8f61)},
-    {'color': Color(0xffff6968)},
-    {'color': Color(0xffff8f61)},
-    {'color': Color(0xffff6968)},
-    {'color': Color(0xffff8f61)},
-  ];
+  int pageNo = 0;
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -123,16 +120,34 @@ class _HomePageScreenState extends State<HomePageScreen> {
                           fit: BoxFit.cover,
                           width: 1000,
                         ),
+                        //child: Image.asset(d),
                       );
                     }).toList(),
                     options: CarouselOptions(
                       autoPlay: true,
                       aspectRatio: 2.0,
                       onPageChanged: (index, reason) {
-                        setState(() {});
+                        pageNo = index;
+                        setState(() {
+                          print("Hello");
+                        });
                       },
                       enlargeCenterPage: true,
                     ))),
+                    SizedBox(height: 10,),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: List.generate(
+                  5,
+                  (index) => Container(
+                        margin: EdgeInsets.all(2.0),
+                        child: Icon(
+                          Icons.circle,
+                          size: 12.0,
+                          color: pageNo == index ? Colors.red : Colors.grey,
+                        ),
+                      )),
+            ),
             SizedBox(
               height: 20,
             ),
@@ -146,28 +161,53 @@ class _HomePageScreenState extends State<HomePageScreen> {
               ),
               child: GridView.builder(
                   padding: EdgeInsets.all(12),
-                  itemCount: 6,
+                  itemCount: dataHomePageList.length,
                   gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
+                      crossAxisCount: 2, mainAxisExtent: 250),
                   itemBuilder: (context, index) {
-                    return Card(
-                      color: Colors.amber,
-                      shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(20)),
-                      child: Padding(
-                        padding: EdgeInsets.all(8.0),
-                        child: Column(children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Text("E-Robot"),
-                              Icon(
-                                Icons.favorite,
-                                color: Colors.white,
+                    DataHomePage dataHomePage = dataHomePageList[index];
+                    return GestureDetector(
+                      onTap: () {
+                        print(dataHomePage.nameTeam);
+                      },
+                      child: Card(
+                        elevation: 20,
+                        shape: RoundedRectangleBorder(
+                            borderRadius: BorderRadius.circular(20)),
+                        child: Column(
+                          children: [
+                            Container(
+                              height: 110,
+                              width: double.infinity,
+                              decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(10),
+                                  image: DecorationImage(
+                                      image:
+                                          AssetImage(dataHomePage.imgHomePage),
+                                      fit: BoxFit.cover)),
+                            ),
+                            Padding(
+                              padding: const EdgeInsets.all(8.0),
+                              child: Column(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    dataHomePage.nameTeam,
+                                    style: TextStyle(
+                                        fontWeight: FontWeight.w600,
+                                        fontSize: 18),
+                                  ),
+                                  Text(
+                                    dataHomePage.nameTeam + " is a team that",
+                                    style: TextStyle(
+                                        color: Colors.black.withOpacity(0.5)),
+                                  )
+                                ],
                               ),
-                            ],
-                          )
-                        ]),
+                            ),
+                          ],
+                        ),
                       ),
                     );
                   }),

@@ -70,6 +70,10 @@ flutter:
     - Image/scratch.png
     - Image/mobile.jpg
     - Image/web.png
+    - Image/robotics.jpg
+    - Image/education.jpg
+    - Image/research.jpg
+    - Image/uxui.jpg
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

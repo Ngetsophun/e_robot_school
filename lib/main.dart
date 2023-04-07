@@ -18,10 +18,10 @@ class MyApp extends StatelessWidget {
 
     return MaterialApp(
       debugShowCheckedModeBanner: false,
-     // home: HomePageScreen(),
-     //home: StartScreen(),
+     home: HomePageScreen(),
+    //home: StartScreen(),
       // home: Login_Form(),
-      home: SignUpScreen(), 
+      //home: SignUpScreen(), 
     );
   }
 }
