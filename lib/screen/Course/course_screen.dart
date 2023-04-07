@@ -1,3 +1,4 @@
+import 'package:e_robot_school/model/course.dart';
 import 'package:e_robot_school/screen/homepages/detailPage.dart';
 import 'package:flutter/material.dart';
 
@@ -9,27 +10,6 @@ class CourseScreen extends StatefulWidget {
 }
 
 class _CourseScreenState extends State<CourseScreen> {
-  var titleList = [
-    "Robotics",
-    "Canva",
-    "Scratch",
-    "Web Application",
-    "Mobile App"
-  ];
-  var descList = [
-    "Robotic is a ",
-    "Canva is a ",
-    "Scratch is a ",
-    "We Design is a ",
-    "Mobile app is a"
-  ];
-  var imgList = [
-    'Image/erobot.jpg',
-    'Image/canva.png',
-    'Image/scratch.png',
-    'Image/web.png',
-    'Image/mobile.jpg'
-  ];
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +20,14 @@ class _CourseScreenState extends State<CourseScreen> {
       ),
       body: ListView.builder(
           padding: EdgeInsets.all(5),
-          itemCount: imgList.length,
+          itemCount: courseList.length,
           itemBuilder: (context, index) {
+            Course course = courseList[index];
             return GestureDetector(
               onTap: () {
-                print(titleList[index]);
-               // Navigator.of(context).push(
-                //    MaterialPageRoute(builder: (context) => DetailPage()));
+                print(course.title);
+                 Navigator.push(context,
+                    MaterialPageRoute(builder: (context) => DetailPage(course: course,)));
               },
               child: Card(
                 child: Row(
@@ -54,7 +35,7 @@ class _CourseScreenState extends State<CourseScreen> {
                     Container(
                       width: 100,
                       height: 150,
-                      child: Image.asset(imgList[index]),
+                      child: Image.asset(course.imgCourse),
                     ),
                     Padding(
                       padding: EdgeInsets.all(10.0),
@@ -62,13 +43,13 @@ class _CourseScreenState extends State<CourseScreen> {
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
                           Text(
-                            titleList[index],
+                            course.title,
                             style: TextStyle(fontSize: 25),
                           ),
                           Container(
                             width: width,
                             child: Text(
-                              descList[index],
+                              course.description
                             ),
                           )
                         ],
