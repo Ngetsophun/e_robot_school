@@ -1,6 +1,7 @@
 import 'package:e_robot_school/screen/homepages/homage.dart';
 import 'package:e_robot_school/screen/homepages/staetPage.dart';
 import 'package:e_robot_school/screen/login_form/login_form.dart';
+import 'package:e_robot_school/screen/login_form/sign_up.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -18,7 +19,9 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
      // home: HomePageScreen(),
-     home: StartScreen(),
+     //home: StartScreen(),
+      // home: Login_Form(),
+      home: SignUpScreen(), 
     );
   }
 }

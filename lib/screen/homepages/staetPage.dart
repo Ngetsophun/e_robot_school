@@ -1,3 +1,4 @@
+import 'package:e_robot_school/screen/homepages/homage.dart';
 import 'package:flutter/material.dart';
 
 class StartScreen extends StatelessWidget {
@@ -55,7 +56,56 @@ class StartScreen extends StatelessWidget {
                         BorderRadius.only(topLeft: Radius.circular(70))),
                 child: Column(
                   children: [
-                    Text("E- Robot Wellcome",style: TextStyle(fontSize: 15),)
+                    SizedBox(
+                      height: 10,
+                    ),
+                    Text(
+                      "E- Robot Welcome",
+                      style: TextStyle(
+                          fontSize: 25,
+                          fontWeight: FontWeight.w600,
+                          letterSpacing: 1,
+                          wordSpacing: 2),
+                    ),
+                    SizedBox(
+                      height: 20,
+                    ),
+                    Padding(
+                      padding: EdgeInsets.symmetric(horizontal: 40),
+                      child: Text(
+                        "Learning is Everything, Learning with Pleasure with E- Robot,Wherever you are",
+                        textAlign: TextAlign.center,
+                        style: TextStyle(
+                            fontSize: 17, color: Colors.black.withOpacity(0.6)),
+                      ),
+                    ),
+                    SizedBox(
+                      height: 60,
+                    ),
+                    Material(
+                      color: Colors.purple,
+                      borderRadius: BorderRadius.circular(10),
+                      child: InkWell(
+                        onTap: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => HomePageScreen()));
+                        },
+                        child: Container(
+                          padding: EdgeInsets.symmetric(
+                              vertical: 15, horizontal: 35),
+                          child: Text(
+                            "Get Start",
+                            style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                letterSpacing: 1,
+                                fontSize: 22),
+                          ),
+                        ),
+                      ),
+                    )
                   ],
                 ),
               ),
